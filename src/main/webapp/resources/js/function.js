@@ -4,7 +4,7 @@ $("#link").on('paste', function () {
     }, 100);
 });
 $("#link").on('focus', function () {
-    $('#search-error-container').html('');
+    $('#linkValidate').html('');
 });
 
 function post() {
@@ -17,8 +17,8 @@ function post() {
     } else if (link.indexOf("4share.vn/f/") !== -1) {
         postUrl = "get4share";
     } else {
-        $('#search-error-container').html('<label class="error">Link không đúng. Vui lòng thử lại</label>');
-        $('#search-error-container').css("display", "block");
+        $('#linkValidate').html('<label class="error">Link không đúng. Vui lòng thử lại</label>');
+        $('#linkValidate').css("display", "block");
         return;
     }
     var password = input[1];

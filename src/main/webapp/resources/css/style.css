@@ -1,3 +1,8 @@
+#linkValidate .error {
+    color: white;
+    font-size: 20px;
+    margin-top: 15px;
+}
 sitename {
     color: white;
     font-size: 17px;

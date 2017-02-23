@@ -77,6 +77,7 @@
                     <input class="search-term required" type="text" id="link" name="link" placeholder="Nhập link vào đây" title="Bạn chưa nhập link" />
                     <input class="search-btn" onclick="post();" type="button" value="GetLink" />
                     <div id="search-error-container"></div>
+                    <div id="linkValidate"></div>
                 </form>
                 <div class="download" id="download">
                     
