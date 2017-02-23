@@ -26,6 +26,7 @@
         <link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
 
         <!-- Style Sheet-->
+        <link rel="icon" type="image/png" href="resources/images/flash.png">
         <link rel='stylesheet' id='bootstrap-css-css'  href='resources/css/style.css' type='text/css' media='all' />
         <link rel='stylesheet' id='bootstrap-css-css'  href='resources/css/bootstrap5152.css?ver=1.0' type='text/css' media='all' />
         <link rel='stylesheet' id='responsive-css-css'  href='resources/css/responsive5152.css?ver=1.0' type='text/css' media='all' />

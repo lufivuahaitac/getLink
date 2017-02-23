@@ -37,11 +37,7 @@ public class GetLinkController {
     private static final Gson GSON = new Gson();
     private static final OkHttpClient client = new OkHttpClient();
 
-    @RequestMapping("/favicon.ico")
-    public String favicon() {
-        return "forward:/resources/images/favicon.ico";
-    }
-
+    
     @RequestMapping(value = "/")
     public String home(HttpServletRequest request) {
         return "view";
