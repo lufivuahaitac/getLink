@@ -9,6 +9,8 @@ $("#link").on('focus', function () {
 
 function post() {
     $('#download').html('');
+    $('#linkValidate').html('');
+    $("#link").blur();
     var postUrl;
     var input = $('#link').val().split("|");
     var link = input[0];

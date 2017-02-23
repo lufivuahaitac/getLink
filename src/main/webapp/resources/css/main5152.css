@@ -160,9 +160,9 @@ h3.search-header {
 }
 
 p.search-tag-line {
-  font-family: "Droid Serif", serif;
+  font-family: initial;
   font-style: italic;
-  font-size: 18px;
+  font-size: 22px;
   line-height: 28px;
   color: #fff;
   text-align: center;

@@ -70,7 +70,7 @@
         <div class="search-area-wrapper">
             <div class="search-area container">
                 <h3 class="search-header">Get link Fshare - 4Share</h3>
-                <p class="search-tag-line">Phàm việc lớn trong thiên hạ cứ về nhà hỏi vợ,vợ bảo sao cứ làm ngựơc laị,ắt sẽ thành công :">
+                <p class="search-tag-line">Phàm việc lớn trong thiên hạ cứ về nhà hỏi vợ,vợ bảo sao cứ làm ngược lại,ắt sẽ thành công :">
 </p>
 
                 <form id="search-form" class="search-form clearfix"  action="#" autocomplete="off">
