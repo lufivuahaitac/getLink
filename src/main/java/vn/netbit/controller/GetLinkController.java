@@ -36,19 +36,30 @@ public class GetLinkController {
     private static final Logger logger = LogManager.getLogger(GetLinkController.class);
     private static final Gson GSON = new Gson();
     private static final OkHttpClient client = new OkHttpClient();
-    @RequestMapping(value = "/getlink")
-    public String terminalProfile(HttpServletRequest request) {
-            return "view";
+
+    @RequestMapping("/favicon.ico")
+    public String favicon() {
+        return "forward:/resources/images/favicon.ico";
     }
-    
+
+    @RequestMapping(value = "/")
+    public String home(HttpServletRequest request) {
+        return "view";
+    }
+
+    @RequestMapping(value = "/getlink")
+    public String getLink(HttpServletRequest request) {
+        return "view";
+    }
+
     @RequestMapping(value = "/getFshare", method = RequestMethod.POST)
     @ResponseBody
     public String get(HttpServletRequest request) {
         try {
-            
+
             String ip = request.getRemoteAddr();
             String url = request.getParameter("url");
-            if(url.isEmpty()){
+            if (url.isEmpty()) {
                 throw new Exception("Chưa nhập link");
             }
             String password = request.getParameter("password");
@@ -65,26 +76,27 @@ public class GetLinkController {
 
             Response response = client.newCall(requestData).execute();
             String responseBody = response.body().string();
-            logger.info("Response Fshare: {}",responseBody);
+            logger.info("Response Fshare: {}", responseBody);
             FshareResponse res = GSON.fromJson(responseBody, FshareResponse.class);
-            if(isNullorEmpty(res.getUrl())){
-                res.setError(isNullorEmpty(res.getMsg())?res.getError():res.getMsg());
-                res.setError(isNullorEmpty(res.getDownloadForm_pwd())?res.getError():res.getDownloadForm_pwd());
+            if (isNullorEmpty(res.getUrl())) {
+                res.setError(isNullorEmpty(res.getMsg()) ? res.getError() : res.getMsg());
+                res.setError(isNullorEmpty(res.getDownloadForm_pwd()) ? res.getError() : res.getDownloadForm_pwd());
                 return GSON.toJson(res);
             }
             return responseBody;
         } catch (Exception ex) {
-             return "{\"error\":\"" + ex + "\"}";
+            return "{\"error\":\"" + ex + "\"}";
         }
 
     }
+
     @RequestMapping(value = "/get4share", method = RequestMethod.POST)
     @ResponseBody
     public String get4share(HttpServletRequest request) {
         try {
             String ip = request.getRemoteAddr();
             String url = request.getParameter("url");
-            if(isNullorEmpty(url)){
+            if (isNullorEmpty(url)) {
                 throw new Exception("Chưa nhập link");
             }
             String password = request.getParameter("password");
@@ -101,16 +113,16 @@ public class GetLinkController {
 
             Response response = client.newCall(requestData).execute();
             String responseBody = response.body().string();
-            logger.info("Response 4Share: {}",responseBody);
+            logger.info("Response 4Share: {}", responseBody);
             return responseBody;
         } catch (Exception ex) {
             return "{\"error\":\"" + ex + "\"}";
         }
 
     }
-    
-    private static boolean isNullorEmpty(String a){
-        return (a==null||a.isEmpty());
+
+    private static boolean isNullorEmpty(String a) {
+        return (a == null || a.isEmpty());
     }
 
 }
