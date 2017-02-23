@@ -65,6 +65,7 @@ public class GetLinkController {
 
             Response response = client.newCall(requestData).execute();
             String responseBody = response.body().string();
+            logger.info("Response Fshare: {}",responseBody);
             FshareResponse res = GSON.fromJson(responseBody, FshareResponse.class);
             if(isNullorEmpty(res.getUrl())){
                 res.setError(isNullorEmpty(res.getMsg())?res.getError():res.getMsg());
@@ -100,6 +101,7 @@ public class GetLinkController {
 
             Response response = client.newCall(requestData).execute();
             String responseBody = response.body().string();
+            logger.info("Response 4Share: {}",responseBody);
             return responseBody;
         } catch (Exception ex) {
             return "{\"error\":\"" + ex + "\"}";
