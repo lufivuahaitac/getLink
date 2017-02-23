@@ -32,25 +32,28 @@ function post() {
         data: 'url=' + link + "&password=" + password,
         success: function (response) {
             console.log(response);
-            var obj = JSON.parse(response);
-            console.log(typeof obj.url);
-            if (typeof obj.url !== 'undefined' && obj.url !== '') {
-                if (postUrl === 'getFshare') {
-                    var name = obj.url.split(/\//).pop();
-                    console.log('Name: ' + name);
-                    $('#download').html('<a id=vipLink href="' + obj.url + '">' + name + '</a>');
-                }
-                if (postUrl === 'get4share') {
-                    console.log('Name: ' + name);
-                    $('#download').html('<a id=vipLink href="' + obj.url + '">' + obj.fileName + '</a>');
-                }
+            try{
+                var obj = JSON.parse(response);
+                console.log(typeof obj.url);
+                if (typeof obj.url !== 'undefined' && obj.url !== '') {
+                    if (postUrl === 'getFshare') {
+                        var name = obj.url.split(/\//).pop();
+                        console.log('Name: ' + name);
+                        $('#download').html('<a id=vipLink href="' + obj.url + '">' + name + '</a>');
+                    }
+                    if (postUrl === 'get4share') {
+                        console.log('Name: ' + name);
+                        $('#download').html('<a id=vipLink href="' + obj.url + '">' + obj.fileName + '</a>');
+                    }
 
+                }
+                if (typeof obj.error !== 'undefined' && obj.error !== '') {
+                    $('#search-error-container').html('<label class="error">' + obj.error + '</label>');
+                    $('#search-error-container').css("display", "block");
+                }
+            } catch (e){
+                console.log(e);
             }
-            if (typeof obj.error !== 'undefined' && obj.error !== '') {
-                $('#search-error-container').html('<label class="error">' + obj.error + '</label>');
-                $('#search-error-container').css("display", "block");
-            }
-
         },
         complete: function (data) {
             $('#fountainG').css("display", "none");
